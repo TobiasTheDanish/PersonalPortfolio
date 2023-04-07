@@ -2,6 +2,9 @@ package com.tobiasthedanish.personalportfolio.Model;
 
 import org.json.JSONObject;
 
+import java.util.AbstractMap;
+import java.util.Map;
+
 public class RepositoryMapper {
     public static Repository fromJson(JSONObject object) {
         Repository repo = new Repository();
@@ -17,5 +20,11 @@ public class RepositoryMapper {
         repo.setLanguage(object.get("language"));
 
         return repo;
+    }
+
+    public static Map.Entry<String, Repository> entryFromJson(JSONObject object) {
+        Repository repository = fromJson(object);
+
+        return new AbstractMap.SimpleEntry<>(object.getString("name"), repository);
     }
 }

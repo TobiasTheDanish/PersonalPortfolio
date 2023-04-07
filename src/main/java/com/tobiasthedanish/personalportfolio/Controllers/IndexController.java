@@ -7,7 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.AbstractMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller()
 @RequestMapping("/")
@@ -15,9 +17,12 @@ public class IndexController {
 
     @GetMapping()
     public String index(Model model) {
-        List<Repository> repos = GithubRequests.getRepositorys("TobiasTheDanish", "sort=updated");
+        Map.Entry<Integer, List<Repository>> response = GithubRequests.getRepositorys("TobiasTheDanish", "sort=updated");
+        if (response.getKey() == 200) {
+            List<Repository> repos = response.getValue();
+            model.addAttribute("repos", repos);
+        }
 
-        model.addAttribute("repos", repos);
         return "index";
     }
 }

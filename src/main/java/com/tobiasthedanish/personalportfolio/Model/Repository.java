@@ -1,5 +1,8 @@
 package com.tobiasthedanish.personalportfolio.Model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Repository {
     private int id;
     private String name;
@@ -11,6 +14,9 @@ public class Repository {
     private int starCount;
     private int watchCount;
     private String language;
+
+
+    private Map<String, String> files = new HashMap<>();
 
     public int getId() {
         return id;
@@ -97,6 +103,22 @@ public class Repository {
 
     public void setLanguage(Object language) {
         setLanguage(language.toString());
+    }
+
+    public Map<String, String> getFiles() {
+        return files;
+    }
+
+    public void addFile(String filename, String content) {
+        files.put(filename, content);
+    }
+
+    public String getFileContent(String filename) {
+        return files.get(filename);
+    }
+
+    public boolean containsFile(String filename) {
+        return files.containsKey(filename);
     }
 
     @Override

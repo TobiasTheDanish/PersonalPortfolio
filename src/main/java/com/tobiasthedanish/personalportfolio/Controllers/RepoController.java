@@ -8,14 +8,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping("/Repo")
 public class RepoController {
 
     @GetMapping("")
     public String getRepo(Model model, @RequestParam String name) {
-        Repository repo = GithubRequests.getRepoByName(name, "TobiasTheDanish");
-        model.addAttribute("repository", repo);
+        String readme = GithubRequests.getRepoFiles(name, "README.md");
+        Map.Entry<Integer, Repository> response = GithubRequests.getRepoByName(name);
+
+        if (response.getKey() == 200) {
+            Repository repo = response.getValue();
+            if (readme != null && !readme.contains("\"message\":\"Not Found\"")) {
+                repo.setDescription(readme);
+            }
+            model.addAttribute("repository", repo);
+        }
 
         return "repo";
     }

@@ -8,4 +8,12 @@ public class APIENDPOINTS {
     public static String githubRepo(String username, String repoName) {
         return "https://api.github.com/repos/" + username + "/" + repoName;
     }
+
+    public static String githubRepoReadme(String username, String repoName) {
+        return "https://api.github.com/repos/" + username + "/" + repoName + "/readme";
+    }
+
+    public static String githubRepoFile(String username, String repoName, String filepath) {
+        return "https://api.github.com/repos/" + username + "/" + repoName + "/contents/" + filepath;
+    }
 }
