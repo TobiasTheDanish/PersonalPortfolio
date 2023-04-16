@@ -12,18 +12,20 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class GithubRequests {
     private static Map<String, Repository> repos = new HashMap<>();
-    private static LocalDateTime lastReposRequest = LocalDateTime.MIN;
-    private static long timeSinceLastReposRequest() {
-        return Math.abs(ChronoUnit.SECONDS.between(LocalDateTime.now(), lastReposRequest));
+    private static long rateLimitReset = 0;
+    private static boolean rateLimitIsReset() {
+        return rateLimitReset < LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
     }
 
     public static Map.Entry<Integer, List<Repository>> getRepositorys(String username, String queryParams) {
-        if (timeSinceLastReposRequest() < 60 && repos.values().size() > 0) {
+        if (rateLimitIsReset() && repos != null && repos.values().size() > 0) {
             return new AbstractMap.SimpleEntry<>(200, repos.values().stream().toList());
         }
 
@@ -44,7 +46,7 @@ public class GithubRequests {
             HttpResponse response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
-                lastReposRequest = LocalDateTime.now();
+                rateLimitReset = Long.parseLong(response.headers().firstValue("X-RateLimit-Reset").get());
 
                 printRateLimitHeaders("Repos", response);
 
