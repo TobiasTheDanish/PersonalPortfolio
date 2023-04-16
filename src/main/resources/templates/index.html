@@ -18,7 +18,7 @@
                         <div class="t-item-title">
                             <h5 th:text="${repo.name}"></h5>
                             <div class="date-wrapper">
-                                <h6 th:text="${repo.createdAt}" class="t-item-date"></h6>
+                                <h6 th:text="'Last change: ' + ${repo.updatedAt.toLocalDate()}" class="t-item-date"></h6>
                             </div>
                         </div>
                         <div class="content">

@@ -1,5 +1,9 @@
 package com.tobiasthedanish.personalportfolio.Model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,9 +12,9 @@ public class Repository {
     private String name;
     private String description;
     private String url;
-    private String createdAt;
-    private String updatedAt;
-    private String pushedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private LocalDateTime pushedAt;
     private int starCount;
     private int watchCount;
     private String language;
@@ -53,28 +57,49 @@ public class Repository {
         this.url = url;
     }
 
-    public String getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
     public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+        int i = createdAt.indexOf("T");
+        String dateStr = createdAt.substring(0, i);
+        String timeStr = createdAt.substring(++i, createdAt.length()-1);
+
+        LocalDate date = LocalDate.parse(dateStr);
+        LocalTime time = LocalTime.parse(timeStr);
+
+        this.createdAt = LocalDateTime.of(date, time);
     }
 
-    public String getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
     public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        int i = updatedAt.indexOf("T");
+        String dateStr = updatedAt.substring(0, i);
+        String timeStr = updatedAt.substring(++i, updatedAt.length()-1);
+
+        LocalDate date = LocalDate.parse(dateStr);
+        LocalTime time = LocalTime.parse(timeStr);
+
+        this.updatedAt = LocalDateTime.of(date, time);
     }
 
-    public String getPushedAt() {
+    public LocalDateTime getPushedAt() {
         return pushedAt;
     }
 
     public void setPushedAt(String pushedAt) {
-        this.pushedAt = pushedAt;
+        int i = pushedAt.indexOf("T");
+        String dateStr = pushedAt.substring(0, i);
+        String timeStr = pushedAt.substring(++i, pushedAt.length()-1);
+
+        LocalDate date = LocalDate.parse(dateStr);
+        LocalTime time = LocalTime.parse(timeStr);
+
+        this.pushedAt = LocalDateTime.of(date, time);
     }
 
     public int getStarCount() {
