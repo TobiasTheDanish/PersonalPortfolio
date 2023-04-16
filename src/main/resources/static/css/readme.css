@@ -1,0 +1,66 @@
+.anchor {
+    display: none;
+}
+
+.code-container {
+    display: grid;
+    grid-template-columns: 1fr 42px;
+    align-items: center;
+    color: var(--text-color-primary);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color-primary);
+    border-radius: 3px;
+    min-height: 46px;
+}
+
+code {
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: pre-line;
+    color: var(--text-color-primary);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color-primary);
+    border-radius: 3px;
+}
+
+pre {
+    display: flex;
+    margin: 1px 2px 2px;
+    padding: 0 5px;
+    min-height: 42px;
+    align-items: center;
+}
+
+pre code {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    border-radius: unset;
+    border: none;
+    background-color: transparent;
+}
+
+.copy-btn {
+    height: 32px;
+    width: 32px;
+    background-color: transparent;
+    border: 2px solid var(--border-color);
+    border-radius: 3px;
+    margin: 7px 5px;
+    transition: background-color 250ms;
+}
+
+.copy-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.copy-icon {
+    color: var(--text-color-primary);
+}
+
+.copied {
+}
+
+.copied > .copy-icon {
+    color: #3ADA34;
+}
