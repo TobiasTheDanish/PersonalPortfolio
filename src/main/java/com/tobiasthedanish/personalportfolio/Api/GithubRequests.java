@@ -106,9 +106,11 @@ public class GithubRequests {
     }
 
     public static String getRepoFiles(String repoName, String filePath) {
-        if (timeSinceLastRepoFilesRequest() < 3600 || (!repos.isEmpty() && repos.containsKey(repoName))) {
-            if (repos.get(repoName).containsFile(filePath)) {
-                return repos.get(repoName).getFileContent(filePath);
+        if (repos != null) {
+            if (timeSinceLastRepoFilesRequest() < 3600 || (!repos.isEmpty() && repos.containsKey(repoName))) {
+                if (repos.get(repoName).containsFile(filePath)) {
+                    return repos.get(repoName).getFileContent(filePath);
+                }
             }
         }
 
