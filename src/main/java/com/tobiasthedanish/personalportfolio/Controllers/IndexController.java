@@ -23,7 +23,7 @@ public class IndexController {
         Map.Entry<Integer, List<Repository>> response = GithubRequests.getRepositorys("TobiasTheDanish", "sort=updated");
         if (response.getKey() == 200) {
             List<Repository> repos = new ArrayList<>(response.getValue());
-            Collections.sort(repos, new RepositorySortByUpdatedDate().reversed());
+            Collections.sort(repos, new RepositorySortByPushedDate().reversed());
             model.addAttribute("repos", repos);
         }
 
