@@ -4,32 +4,38 @@ let preTags = readmeContainer.getElementsByTagName("pre");
 
 for (let i = 0; i < preTags.length; i++) {
     let tag = preTags.item(i);
+
     let copyIcon = document.createElement("i");
     copyIcon.classList.add("copy-icon");
     copyIcon.classList.add("fa-regular");
     copyIcon.classList.add("fa-copy");
+
+    let checkIcon = document.createElement("i");
+    checkIcon.classList.add("copy-icon");
+    checkIcon.classList.add("fa-regular");
+    checkIcon.classList.add("fa-circle-check");
+
     let clipboardCopy = document.createElement("button");
     clipboardCopy.classList.add("copy-btn");
-    clipboardCopy.onclick = function() { copyToClipboard(tag.children.item(0), copyIcon); }
-
+    clipboardCopy.id = "copy-btn-" + i;
     clipboardCopy.appendChild(copyIcon);
+    clipboardCopy.appendChild(checkIcon);
+    clipboardCopy.onclick = function() { jqueryCopy(tag.children.item(0), i); };
 
     tag.parentNode.appendChild(clipboardCopy);
     tag.parentElement.classList.add("code-container");
 }
 
-function copyToClipboard(element, icon) {
+function jqueryCopy(element, index) {
     let textToCopy = element.innerText;
 
     navigator.clipboard.writeText(textToCopy).then(() => {
-        icon.parentElement.classList.add("copied");
-        icon.classList.remove("fa-copy");
-        icon.classList.add("fa-circle-check");
+        $(`#copy-btn-${index}`).toggleClass("copied");
+        $(`#copy-btn-${index} > .copy-icon`).fadeToggle("fast");
     });
 
     setTimeout(() => {
-        icon.parentElement.classList.remove("copied");
-        icon.classList.remove("fa-circle-check");
-        icon.classList.add("fa-copy");
+        $(`#copy-btn-${index}`).toggleClass("copied");
+        $(`#copy-btn-${index} > .copy-icon`).fadeToggle("fast");
     }, 2500);
 }
