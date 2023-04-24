@@ -3,6 +3,8 @@ body {
     --bg-color-primary: #344E41;
     --bg-color-secondary: #3A5A40;
     --text-color-primary: #DAD7CD;
+    --text-color-link: #A9E4E3;
+    --text-color-link-hover: #ABCBCA;
     --border-color: #ACB0BD;
 
     --timeline-item-width: 400px;
@@ -200,4 +202,17 @@ body {
 
 .read-me-container {
     min-height: 592px;
+}
+
+.read-me-container a {
+    color: var(--text-color-link);
+}
+
+.read-me-container a:hover {
+    color: var(--text-color-link-hover);
+}
+
+.bean {
+    background-color: var(--bg-color-secondary);
+    border: 1px solid var(--border-color);
 }
