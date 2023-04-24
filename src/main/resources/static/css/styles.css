@@ -115,16 +115,34 @@ body {
     width: max-content;
 }
 
+.t-item-title > h5 {
+    margin: 0;
+}
+
 .direction-l > .t-item-title {
     margin-left: auto;
 }
 
+.date-wrapper {
+    position: relative;
+}
+
 .t-item-text {
+    position: relative;
     font-style: italic;
 }
 
-.date-wrapper {
-    position: relative;
+.t-item-word {
+    display: inline-block;
+    transform: translate(-5%, -10%);
+    margin-right: 0.3em;
+    opacity: 0;
+    transition: opacity 10ms, transform 200ms cubic-bezier(.90, .06, .15, .90);
+}
+
+.t-item-body:hover .t-item-word{
+    transform: translate(0%, 0%);
+    opacity: 1;
 }
 
 .card-header, .card-sidebar, .card-footer{
