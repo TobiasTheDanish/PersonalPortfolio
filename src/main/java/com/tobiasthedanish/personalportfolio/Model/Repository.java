@@ -134,7 +134,7 @@ public class Repository {
         return files;
     }
 
-    public void addFile(String filename, String content) {
+    public void putFile(String filename, String content) {
         files.put(filename, content);
     }
 

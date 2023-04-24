@@ -22,7 +22,7 @@ public class RepoController {
         if (response.getKey() == 200) {
             Repository repo = response.getValue();
             if (readme != null && !readme.contains("\"message\":\"Not Found\"")) {
-                repo.setDescription(readme);
+                model.addAttribute("readme", readme);
             }
             model.addAttribute("repository", repo);
         }

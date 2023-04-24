@@ -3,7 +3,6 @@ package com.tobiasthedanish.personalportfolio.Controllers;
 import com.tobiasthedanish.personalportfolio.Api.GithubRequests;
 import com.tobiasthedanish.personalportfolio.Model.Repository;
 import com.tobiasthedanish.personalportfolio.Model.RepositorySortByPushedDate;
-import com.tobiasthedanish.personalportfolio.Model.RepositorySortByUpdatedDate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

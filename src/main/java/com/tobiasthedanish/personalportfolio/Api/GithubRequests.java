@@ -12,7 +12,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -132,7 +131,7 @@ public class GithubRequests {
             printRateLimitHeaders("RepoFiles", response);
 
             if (!repos.isEmpty()) {
-                repos.get(repoName).addFile(filePath, response.body().toString());
+                repos.get(repoName).putFile(filePath, response.body().toString());
             }
 
             return response.body().toString();
