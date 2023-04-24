@@ -7,3 +7,10 @@ public static void main(String[] args) {
     System.out.println("Hello world");
 }
 ```
+
+Here's another code block for testing
+```
+public static void main(String[] args) {
+    System.out.println("Hello again");
+}
+```
