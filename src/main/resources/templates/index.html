@@ -9,28 +9,33 @@
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid">
-    <div class="d-flex justify-content-center">
-        <div class="timeline-container">
-            <ul class="timeline" id="timeline">
-                <li class="timeline-item" th:each="repo : ${repos}">
-                    <div class="t-item-body" th:onclick="navigate([[${repo.name}]])">
-                        <div class="t-item-title">
-                            <h5 th:text="${repo.name}"></h5>
-                            <div class="date-wrapper">
-                                <h6 th:text="'Last change: ' + ${repo.pushedAt.toLocalDate()}" class="t-item-date"></h6>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <p th:text="${repo.description}" class="t-item-text"></p>
-                            <i class="fa-brands fa-github"></i>
-                            <span>
+<div class="container-fluid ps-0">
+    <div class="row">
+        <div class="col-2 p-0" th:insert="fragments/sidemenu :: sidemenu"></div>
+        <div class="col">
+            <div class="d-flex justify-content-center">
+                <div class="timeline-container">
+                    <ul class="timeline" id="timeline">
+                        <li class="timeline-item" th:each="repo : ${repos}">
+                            <div class="t-item-body" th:onclick="navigate([[${repo.name}]])">
+                                <div class="t-item-title">
+                                    <h5 th:text="${repo.name}"></h5>
+                                    <div class="date-wrapper">
+                                        <h6 th:text="'Last change: ' + ${repo.pushedAt.toLocalDate()}" class="t-item-date"></h6>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <p th:text="${repo.description}" class="t-item-text"></p>
+                                    <i class="fa-brands fa-github"></i>
+                                    <span>
                                 <a target="_blank" th:href="${repo.url}" class="card-link"> Repository</a>
                             </span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

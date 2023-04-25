@@ -11,31 +11,36 @@
     <link href="/css/readme.css" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid">
-    <div class="d-flex justify-content-center p-5">
-        <div th:each="repo : ${repository}" class="card m-2" style="width: 70vw; padding-left: 150px;">
-            <div class="card-sidebar">
-                <div class="sidebar-container">
-                    <div class="bean d-flex col-3 py-2 ms-1 badge rounded-pill justify-content-evenly" style="width: 65px;">
-                        <i class="fa-brands fa-github"></i>
-                        <a target="_blank" th:href="${repo.url}" class="card-link" style="text-decoration: none; color: white;">
-                            <span>URL</span>
-                        </a>
+<div class="container-fluid ps-0">
+    <div class="row">
+        <div class="col-2 p-0" th:insert="fragments/sidemenu :: sidemenu"></div>
+        <div class="col">
+            <div class="d-flex justify-content-center p-5">
+                <div th:each="repo : ${repository}" class="card m-2" style="width: 70vw; padding-left: 150px;">
+                    <div class="card-sidebar">
+                        <div class="sidebar-container">
+                            <div class="bean d-flex col-3 py-2 ms-1 badge rounded-pill justify-content-evenly" style="width: 65px;">
+                                <i class="fa-brands fa-github"></i>
+                                <a target="_blank" th:href="${repo.url}" class="card-link" style="text-decoration: none; color: white;">
+                                    <span>URL</span>
+                                </a>
+                            </div>
+                            <div class="bean d-flex col-3 py-2 ms-1 badge rounded-pill justify-content-evenly" style="width: 65px;">
+                                <i class="fa-regular fa-star"></i><span th:text=" ${repo.starCount}" class="m-0"></span>
+                            </div>
+                            <div class="bean d-flex col-3 py-2 ms-1 badge rounded-pill justify-content-evenly" style="width: 65px;">
+                                <i class="fa-regular fa-eye"></i><span th:text=" ${repo.watchCount}" class="m-0"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bean d-flex col-3 py-2 ms-1 badge rounded-pill justify-content-evenly" style="width: 65px;">
-                        <i class="fa-regular fa-star"></i><span th:text=" ${repo.starCount}" class="m-0"></span>
+                    <div class="card-header">
+                        <h5 th:text="${repo.name}" class="card-title"></h5>
+                        <h6 th:text="${repo.createdAt}" class="card-subtitle mb-2"></h6>
                     </div>
-                    <div class="bean d-flex col-3 py-2 ms-1 badge rounded-pill justify-content-evenly" style="width: 65px;">
-                        <i class="fa-regular fa-eye"></i><span th:text=" ${repo.watchCount}" class="m-0"></span>
+                    <div class="card-body">
+                        <div class="read-me-container" th:utext="${readme} ?: ${repo.description}"></div>
                     </div>
                 </div>
-            </div>
-            <div class="card-header">
-                <h5 th:text="${repo.name}" class="card-title"></h5>
-                <h6 th:text="${repo.createdAt}" class="card-subtitle mb-2"></h6>
-            </div>
-            <div class="card-body">
-                <div class="read-me-container" th:utext="${readme} ?: ${repo.description}"></div>
             </div>
         </div>
     </div>
