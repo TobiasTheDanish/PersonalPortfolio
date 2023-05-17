@@ -35,12 +35,13 @@ body {
 .timeline:before {
     position: absolute;
     left: 50%;
-    top: 0;
+    top: -50px;
     content: ' ';
     display: block;
     width: 12px;
-    height: 100%;
+    height: calc(100% + 50px);
     background-color: var(--bg-color-primary);
+    box-shadow: 0 0 10px var(--bg-color-primary);
 }
 
 .timeline-item {
@@ -57,7 +58,7 @@ body {
 .direction-l {
     float: left;
     text-align: right;
-    box-shadow: -2px 2px 3px #000000 !important;
+    box-shadow: -2px 2px 15px var(--bg-color-primary) !important;
 }
 
 .direction-r {
@@ -73,8 +74,9 @@ body {
     width: 24px;
     height: 24px;
     background: var(--bg-color-body);
-    border: 6px solid var(--bg-color-secondary);
+    border: 6px solid var(--bg-color-primary);
     border-radius: 50%;
+    box-shadow: 0xp 0xp 10px var(--bg-color-primary);
 }
 
 .direction-r:before {
@@ -91,18 +93,21 @@ body {
     background-color: var(--bg-color-primary);
     left: 288px;
     z-index: -1;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 0 10px var(--bg-color-primary);;
 }
 
 .direction-r:after {
     left: -12px;
+    /*box-shadow: -2px 2px 5px var(--bg-color-primary);*/
 }
 
 .t-item-body {
-    background: var(--bg-color-secondary);
+    background: var(--bg-color-primary);
     padding: 10px 20px;
     border-radius: 8px;
-    border: 2px solid var(--bg-color-primary);
-    box-shadow: 2px 2px 3px #000000;
+    border: 2px solid var(--border-color);
+    box-shadow: 2px 2px 15px var(--bg-color-primary);
     color: var(--text-color-primary);
 }
 
@@ -156,7 +161,11 @@ body {
 .card {
     background-color: var(--bg-color-secondary) !important;
     color: var(--text-color-primary);
+    border-width: 2px;
     border-color: var(--border-color) !important;
+    box-shadow: 5px 5px 25px var(--bg-color-secondary);
+    width: 70vw;
+    padding-left: 150px;
 }
 
 .card-header {
@@ -201,7 +210,7 @@ body {
 }
 
 .read-me-container {
-    min-height: 592px;
+    min-height: 589px;
 }
 
 .read-me-container a {

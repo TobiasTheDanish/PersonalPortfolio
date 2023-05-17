@@ -9,14 +9,15 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="/css/styles.css" rel="stylesheet">
     <link href="/css/readme.css" rel="stylesheet">
+    <link th:replace="~{fragments/sidemenu :: stylesheet}">
 </head>
 <body>
 <div class="container-fluid ps-0">
     <div class="row">
-        <div class="col-2 p-0" th:insert="fragments/sidemenu :: sidemenu"></div>
+        <div id="sidemenu-container" class="col p-0" th:insert="~{fragments/sidemenu :: sidemenu}"></div>
         <div class="col">
             <div class="d-flex justify-content-center p-5">
-                <div th:each="repo : ${repository}" class="card m-2" style="width: 70vw; padding-left: 150px;">
+                <div th:each="repo : ${repository}" class="card m-2">
                     <div class="card-sidebar">
                         <div class="sidebar-container">
                             <div class="bean d-flex col-3 py-2 ms-1 badge rounded-pill justify-content-evenly" style="width: 65px;">
@@ -46,5 +47,6 @@
     </div>
 </div>
 <script src="/js/repo.js"></script>
+<script th:replace="~{fragments/sidemenu :: script}"></script>
 </body>
 </html>

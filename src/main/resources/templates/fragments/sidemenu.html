@@ -2,17 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="/css/sidemenu.css" rel="stylesheet" th:fragment="stylesheet">
 </head>
 <body>
     <div class="sidemenu" th:fragment="sidemenu">
-        <ul class="sidemenu-list">
+        <div class="ham-menu" id="ham-menu" onclick="toggleHamMenu(this)">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+        </div>
+        <ul class="sidemenu-list" id="toggle-target">
             <li>
                 <a class="sidemenu-list-item sidemenu-link" href="/">
                     <i class="sidemenu-item-icon fa-solid fa-house"></i><span class="sidemenu-item-text">Home</span>
                 </a>
             </li>
             <li>
-                <a class="sidemenu-list-item sidemenu-link" href="/">
+                <a class="sidemenu-list-item sidemenu-link" href="/projects">
                     <i class="sidemenu-item-icon fa-solid fa-house"></i><span class="sidemenu-item-text">Projects</span>
                 </a>
             </li>
@@ -22,7 +28,7 @@
                 </a>
             </li>
         </ul>
-        <link href="/css/sidemenu.css" rel="stylesheet">
     </div>
+    <script src="/js/sidemenu.js" th:fragment="script"></script>
 </body>
 </html>

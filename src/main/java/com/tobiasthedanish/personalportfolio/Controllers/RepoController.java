@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/Repo")
+@RequestMapping("/repo")
 public class RepoController {
 
     @GetMapping("")

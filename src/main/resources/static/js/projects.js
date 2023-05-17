@@ -45,7 +45,7 @@ for (let i = 0; i < timelineItems.length; i++) {
 
 function navigate(reponame) {
     let url = new URL(window.location.href);
-    url.pathname = "/Repo";
+    url.pathname = "/repo";
 
     url.search = "name=" + reponame;
 

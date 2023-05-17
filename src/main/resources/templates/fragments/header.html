@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/header.css" rel="stylesheet" th:fragment="stylesheet">
+</head>
+<body>
+<div id="header" th:fragment="header(title, text)">
+    <h2 class="header-title" th:text="${title}"></h2>
+    <p class="header-text" th:text="${text}"></p>
+</div>
+
+<script src="/js/header.js" th:fragment="script"></script>
+</body>
+</html>
